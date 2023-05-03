@@ -6,6 +6,8 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
+import { QUERIES } from '../../constants';
+import { Menu, ShoppingBag } from 'react-feather';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   if (!isOpen) {
@@ -13,7 +15,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <div>
+    <Icon {Menu} />
       <button onClick={onDismiss}>Dismiss menu</button>
       <nav>
         <a href="/sale">Sale</a>
@@ -28,8 +30,16 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         <a href="/privacy">Privacy Policy</a>
         <a href="/contact">Contact Us</a>
       </footer>
-    </div>
+    </StyledMobileMenu>
   );
 };
+
+const StyledMobileMenu = styled.div`
+  @media (${QUERIES.desktop}) {
+    display: none;
+  }
+
+  display: flex;
+`;
 
 export default MobileMenu;

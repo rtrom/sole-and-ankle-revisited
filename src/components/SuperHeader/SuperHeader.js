@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { COLORS } from '../../constants';
+import { QUERIES } from '../../constants';
 
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
@@ -10,7 +11,7 @@ import Icon from '../Icon';
 const SuperHeader = () => {
   return (
     <Wrapper>
-      <MarketingMessage>
+      <MarketingMessage>j
         Free shipping on domestic orders over $75!
       </MarketingMessage>
       <SearchInput />
@@ -32,6 +33,11 @@ const Wrapper = styled.div`
   height: 40px;
   padding-left: 32px;
   padding-right: 32px;
+
+  
+  @media (${QUERIES.tablet}) {
+    display: none;
+  }
 `;
 
 const MarketingMessage = styled.span`

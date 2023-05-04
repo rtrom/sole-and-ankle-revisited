@@ -15,7 +15,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <Icon {Menu} />
+    <StyledMobileMenu>
       <button onClick={onDismiss}>Dismiss menu</button>
       <nav>
         <a href="/sale">Sale</a>

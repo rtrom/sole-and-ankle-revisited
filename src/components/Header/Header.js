@@ -6,6 +6,8 @@ import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import Icon from '../Icon/Icon';
+import UnstyledButton from '../UnstyledButton/UnstyledButton';
+import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -22,19 +24,34 @@ const Header = () => {
         <Side>
           <Logo />
         </Side>
-        <Nav>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
-        <Side />
-      <Icon {menu,,,,}>
-        <button onClick={() => setShowMobileMenu(true)}></button>
-      </Icon>
+        </DesktopNav>
+        <MobileAction>
+          <UnstyledButton>
+            <Icon id="shopping-bag">
+              <VisuallyHidden>ShoppingBag</VisuallyHidden>
+            </Icon>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="search">
+              <VisuallyHidden>Search</VisuallyHidden>
+            </Icon>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="menu">
+              <VisuallyHidden>Menu</VisuallyHidden>
+            </Icon>
+          </UnstyledButton>
+        </MobileAction>
+        <RightSide />
       </MainHeader>
+
       <MobileMenu
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
@@ -52,11 +69,11 @@ const MainHeader = styled.div`
 
   @media (${QUERIES.tablet}) {
     border-top: 4px solid ${COLORS.gray[900]};
-
+    justify-content: space-between;
   }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
@@ -66,8 +83,25 @@ const Nav = styled.nav`
   }
 `;
 
+const MobileAction = styled.div`
+  display: flex;
+  gap: 33px;
+
+  @media (${QUERIES.mobile}) {
+    gap: 17px;
+  }
+`;
+
 const Side = styled.div`
   flex: 1;
+
+`;
+
+const RightSide = styled(Side)`
+
+  @media (${QUERIES.tablet}) {
+    display: none;
+  }
 `;
 
 const NavLink = styled.a`
